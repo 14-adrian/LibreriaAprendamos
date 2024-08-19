@@ -1,0 +1,47 @@
+
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]>      <html class="no-js"> <!--<![endif]-->
+<html lang="es">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>Login</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        {% load static %}
+        <link rel="stylesheet" href="{% static "login.css" %}">
+        
+    </head>
+    <body>
+        
+        <div style="margin: 25px; padding-right: 80px;">
+            <h1>Libreria Aprendamos</h1>
+            
+        </div>
+        <div class="form-structor">
+            <div class="signup">
+                <h2 class="form-title" id="signup"><span>o</span>Registrate</h2>
+                <div class="form-holder">
+                    <input type="text" class="input" placeholder="Nombre" />
+                    <input type="email" class="input" placeholder="Correo" />
+                    <input type="password" class="input" placeholder="Contraseña" />
+                </div>
+                <button class="submit-btn">Registrate</button>
+            </div>
+            <div class="login slide-up">
+                <div class="center">
+                    <h2 class="form-title" id="login"><span>o</span>Inicia Sesion</h2>
+                    <div class="form-holder">
+                        <input type="email" class="input" placeholder="Correo" />
+                        <input type="password" class="input" placeholder="Contraseña" />
+                    </div>
+                    <button class="submit-btn">Iniciar Sesion</button>
+                </div>
+            </div>
+        </div>
+        {% load static %}
+        <script src="{% static "login.js" %}" async defer></script>
+    </body>
+</html>
