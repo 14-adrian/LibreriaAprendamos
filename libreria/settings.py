@@ -146,7 +146,12 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 AUTH_USER_MODEL = 'myapp.Usuario'
 
 # Configuración de AWS S3
+from dotenv import load_dotenv
 
+load_dotenv('llaves.env')  # Carga el contenido de .env en variables de entorno
+
+AWS_ACCESS_KEY_ID = os.getenv('AWS_ACCESS_KEY_ID')
+AWS_SECRET_ACCESS_KEY = os.getenv('AWS_SECRET_ACCESS_KEY')
 AWS_STORAGE_BUCKET_NAME = 'libreria-aprendamos'
 AWS_S3_REGION_NAME = 'us-east-1'  # Cambia según tu región
 #AWS_LOCATION = 'static'
