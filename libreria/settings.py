@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/5.1/ref/settings/
 """
 
 from pathlib import Path
+import os
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -23,21 +24,23 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-2k=qq1j22v7ko!k4_3sah@t_2f(-38#+hp4cq@@b^*twlmdqx^'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['.herokuapp.com']
 
 
 # Application definition
 
 INSTALLED_APPS = [
+    'storages',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'myapp'
+    'myapp',
+    
 ]
 
 MIDDLEWARE = [
@@ -73,13 +76,29 @@ WSGI_APPLICATION = 'libreria.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/5.1/ref/settings/#databases
-
+"""
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'libreria',
+        'USER': 'root',
+        'PASSWORD': '',
+        'HOST': 'localhost',  # o la dirección de tu servidor MySQL
+        'PORT': '3306',  # El puerto por defecto de MySQL
     }
 }
+"""
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'libreria',
+        'USER': 'mongo',
+        'PASSWORD': 'Pass1234',
+        'HOST': '107.23.62.190',  # o la dirección de tu servidor MySQL
+        'PORT': '3306',  # El puerto por defecto de MySQL
+    }
+}
+
 
 
 # Password validation
@@ -122,3 +141,25 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+AUTH_USER_MODEL = 'myapp.Usuario'
+
+# Configuración de AWS S3
+
+AWS_STORAGE_BUCKET_NAME = 'libreria-aprendamos'
+AWS_S3_REGION_NAME = 'us-east-1'  # Cambia según tu región
+#AWS_LOCATION = 'static'
+
+AWS_S3_CUSTOM_DOMAIN = '%s.s3.amazonaws.com' % AWS_STORAGE_BUCKET_NAME
+
+#STATIC_URL = 'https://%s/%s/' % (AWS_S3_CUSTOM_DOMAIN, AWS_LOCATION)
+
+AWS_S3_FILE_OVERWRITE = False
+AWS_DEFAULT_ACL = None
+AWS_S3_VERIFY = True
+
+
+STATICFILES_STORAGE ='storages.backends.s3boto3.S3Boto3Storage'
+DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
+
+

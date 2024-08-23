@@ -13,6 +13,26 @@ html,body {
   -moz-osx-font-smoothing: grayscale;
 }
 
+.custom-fields {
+	border: 0;
+	outline: none;
+	box-shadow: none;
+	display: block;
+	height: 30px;
+	line-height: 30px;
+	padding: 8px 15px;
+	border-bottom: 1px solid #eee;
+	width: 100%;
+	font-size: 12px;
+	
+	&:last-child {
+		border-bottom: 0;
+	}
+	&::-webkit-input-placeholder {
+		color: rgba(0,0,0,0.4);
+	}
+}
+
 .form-structor {
 	background-color: #222;
 	border-radius: 15px;
@@ -87,8 +107,28 @@ html,body {
 			opacity: 1;
 			visibility: visible;
 			-webkit-transition: all .3s ease;
+
+			.input[type="text"]{
+				border: 0;
+				outline: none;
+				box-shadow: none;
+				display: block;
+				height: 30px;
+				line-height: 30px;
+				padding: 8px 15px;
+				border-bottom: 1px solid #eee;
+				width: 100%;
+				font-size: 12px;
+				
+				&:last-child {
+					border-bottom: 0;
+				}
+				&::-webkit-input-placeholder {
+					color: rgba(0,0,0,0.4);
+				}
+			}
 			
-			.input {
+			.input[type="email"], .input[type="password"] {
 				border: 0;
 				outline: none;
 				box-shadow: none;

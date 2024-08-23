@@ -23,21 +23,32 @@
         <div class="form-structor">
             <div class="signup">
                 <h2 class="form-title" id="signup"><span>o</span>Registrate</h2>
-                <div class="form-holder">
-                    <input type="text" class="input" placeholder="Nombre" />
-                    <input type="email" class="input" placeholder="Correo" />
-                    <input type="password" class="input" placeholder="Contraseña" />
-                </div>
-                <button class="submit-btn">Registrate</button>
+                <form class="form-holder" method="post" action="{% url 'sign_up_view' %}">
+                    {% csrf_token %}
+                    
+                    <input type="email" class="custom-fields" name="email1" placeholder="Correo" required/>
+                    <input type="text" class="custom-fields" name="nombre1" placeholder="Nombre" required/>
+                    <input type="password" class="input" name="password1" placeholder="Contraseña" required/>
+                    <input type="password" class="input" name="password_confirm" placeholder="Confirmar Contraseña" required/>
+                    <button class="submit-btn" >Registrate</button>
+                </form>
+                
             </div>
             <div class="login slide-up">
                 <div class="center">
                     <h2 class="form-title" id="login"><span>o</span>Inicia Sesion</h2>
-                    <div class="form-holder">
-                        <input type="email" class="input" placeholder="Correo" />
-                        <input type="password" class="input" placeholder="Contraseña" />
+                    <form class="form-holder" method="post" action="{% url 'login_view' %}">
+                        {% csrf_token %}
+                        <input type="email" class="input" placeholder="Correo" name="email" required/>
+                        <input type="password" class="input" placeholder="Contraseña" name="password" required/>
+                        <button type="submit" class="submit-btn">Iniciar Sesion</button>
+                    </form>
+                    {% if error %}
+                    <div class="alert alert-danger" role="alert">
+                        {{ error }}
                     </div>
-                    <button class="submit-btn">Iniciar Sesion</button>
+                    {% endif %}
+                    
                 </div>
             </div>
         </div>

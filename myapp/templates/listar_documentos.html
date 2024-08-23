@@ -1,0 +1,29 @@
+{% extends 'main.html' %}
+
+{% block content %}
+<h2 class="mb-4">Lista de Documentos</h2>
+<table class="table table-striped table-hover">
+    <thead class="thead-dark">
+        <tr>
+            <th>Usuario</th>
+            <th>Nombre</th>
+            <th>Archivo</th>
+            <th>Fecha de subida</th>
+            <th>Acciones</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for documento in documentos %}
+        <tr>
+            <td>{{ documento.usuario.username }}</td>
+            <td>{{ documento.nombre }}</td>
+            <td><a href="{{ documento.archivo.url }}" target="_blank">{{ documento.archivo.name }}</a></td>
+            <td>{{ documento.fecha_subida }}</td>
+            <td>
+                <a href="{{ documento.archivo.url }}" download class="btn btn-sm btn-success">Descargar</a>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}
